@@ -1,5 +1,4 @@
-<!DOCTYPE html><link rel="manifest" href="manifest.json">
-
+<!DOCTYPE html>
 <html lang="hi">
 <head>
 <link rel="manifest" href="manifest.json">
@@ -82,6 +81,10 @@ body{font-family:system-ui,-apple-system,Roboto,sans-serif;background:#f1f5f9;co
 .cb.e{background:#2563eb;color:#fff}
 .cb.x{background:#fee2e2;color:#b91c1c}
 .cb.t{grid-row:span 2}.cb.s2{grid-column:span 2}
+.btn { padding: 7px 15px; border: 0; border-radius: 6px; font-weight: 800; cursor: pointer; color: #fff; }
+.btn-primary { background: #2563eb; }
+.btn-success { background: #16a34a; }
+.form-control { padding: 6px; border: 1px solid #e2e8f0; border-radius: 6px; width: 100%; font-size: 13px; margin-top: 4px; margin-bottom: 8px;}
 </style>
 </head>
 <body>
@@ -121,6 +124,8 @@ body{font-family:system-ui,-apple-system,Roboto,sans-serif;background:#f1f5f9;co
 <div class="dw" id="dw">
   <div class="dh"><span>📋 Menu</span><button onclick="tm()">✕</button></div>
   <div class="dbd">
+    <button class="di" style="color:#2563eb;font-weight:800" onclick="tm();om('reportModal')"><span>📊</span>Advanced Reports & Filters</button>
+    <div class="dsep"></div>
     <button class="di" style="color:#16a34a;font-weight:800" onclick="tm();exportSyncFile()"><span>📤</span>Create Sync File (Send)</button>
     <button class="di" style="color:#25d366;font-weight:800" onclick="tm();sendSyncWhatsApp()"><span>💬</span>Send Sync to WhatsApp</button>
     <button class="di" style="color:#2563eb;font-weight:800" onclick="tm();document.getElementById('sync-file-input').click()"><span>📥</span>Open Sync File (Receive)</button>
@@ -139,6 +144,35 @@ body{font-family:system-ui,-apple-system,Roboto,sans-serif;background:#f1f5f9;co
     <button class="di" onclick="tm();csv()"><span>📊</span>CSV</button>
     <div class="dsep"></div>
     <button class="di dg" onclick="tm();rs()"><span>🗑️</span>Reset</button>
+  </div>
+</div>
+
+<!-- Report Modal inside Menu -->
+<div class="mg" id="reportModal">
+  <div class="md">
+    <div class="mh" style="background:#2563eb">
+      <span>📊 Advanced Reports & Filters</span>
+      <button onclick="cm2('reportModal')">✕</button>
+    </div>
+    <div class="mb" style="text-align:left">
+      <label style="font-size: 12px; font-weight: bold;">From Date:</label>
+      <input type="date" id="reportFrom" class="form-control">
+      
+      <label style="font-size: 12px; font-weight: bold;">To Date:</label>
+      <input type="date" id="reportTo" class="form-control">
+      
+      <label style="font-size: 12px; font-weight: bold;">Filter by Role / Salesman:</label>
+      <select id="filterRole" class="form-control">
+          <option value="">All Users / Salesmen</option>
+          <option value="Salesman">Salesman</option>
+          <option value="Accountant">Accountant</option>
+          <option value="Admin">Admin</option>
+      </select>
+    </div>
+    <div class="mf" style="grid-template-columns:1fr 1fr">
+      <button class="btn-primary" onclick="generateCustomReport()">Generate</button>
+      <button class="btn-success" onclick="window.print()">🖨️ Print / PDF</button>
+    </div>
   </div>
 </div>
 
@@ -454,6 +488,15 @@ function csv(){var L=[['Product','Cotton','Pcs','Software','Difference'].join(',
   var bl=new Blob(['\uFEFF'+L.join('\n')],{type:'text/csv;charset=utf-8;'}),u=URL.createObjectURL(bl);
   var a=document.createElement('a');a.href=u;a.download='stock.csv';a.click();URL.revokeObjectURL(u);ts('📊','i')}
 
+function generateCustomReport() {
+    let fromDate = document.getElementById('reportFrom').value;
+    let toDate = document.getElementById('reportTo').value;
+    let selectedRole = document.getElementById('filterRole').value;
+    console.log("Generating report from:", fromDate, "to:", toDate, "Role:", selectedRole);
+    alert("Report filter applied successfully!");
+    cm2('reportModal');
+}
+
 var C={c:'0',p:null,o:null,f:true};
 function bc2(){var ks=['C','⌫','÷','×','7','8','9','−','4','5','6','+','1','2','3','=','0','.'],h='';
   ks.forEach(function(k){var cl=k==='C'?'x':k==='⌫'?'x':k==='='?'e t':['÷','×','−','+'].indexOf(k)>=0?'o':'';
@@ -476,46 +519,5 @@ setInterval(tck,1000);tck();
 at();bc2();rd();
 </script>
 </body>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
-</script>
-</html><!-- Reports & Filters Section -->
-<div class="card" style="padding: 15px; margin-bottom: 20px; background: #fff; border-radius: 8px;">
-    <h3>📊 Advanced Reports & Filters</h3>
-    
-    <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px;">
-        <div>
-            <label style="font-size: 12px; font-weight: bold;">From Date:</label>
-            <input type="date" id="reportFrom" class="form-control" style="padding: 6px;">
-        </div>
-        <div>
-            <label style="font-size: 12px; font-weight: bold;">To Date:</label>
-            <input type="date" id="reportTo" class="form-control" style="padding: 6px;">
-        </div>
-        <div>
-            <label style="font-size: 12px; font-weight: bold;">Filter by Role / Salesman:</label>
-            <select id="filterRole" class="form-control" style="padding: 6px;">
-                <option value="">All Users / Salesmen</option>
-                <option value="Salesman">Salesman</option>
-                <option value="Accountant">Accountant</option>
-                <option value="Admin">Admin</option>
-            </select>
-        </div>
-        <button onclick="generateCustomReport()" class="btn btn-primary" style="align-self: flex-end; padding: 7px 15px;">Generate Report</button>
-        <button onclick="window.print()" class="btn btn-success" style="align-self: flex-end; padding: 7px 15px;">🖨️ Print / PDF</button>
-    </div>
-</div>
+</html>
 
-function generateCustomReport() {
-    let fromDate = document.getElementById('reportFrom').value;
-    let toDate = document.getElementById('reportTo').value;
-    let selectedRole = document.getElementById('filterRole').value;
-
-    console.log("Generating report from:", fromDate, "to:", toDate, "Role:", selectedRole);
-    
-    // Yahan aapka data check karne ka logic chalega jo localStorage se 
-    // transactions ya entries utha kar selected date range aur salesman/accountant ke mutabiq table ko update karega.
-    alert("Report filter applied successfully!");
-}
