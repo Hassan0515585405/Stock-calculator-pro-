@@ -36,7 +36,5 @@
       "form_factor": "narrow"
     }
   ],
-  "categories": ["business", "finance", "productivity"],
-  "prefer_related_applications": false,
-  "iarc_rating_id": ""
+  "categories": ["business", "finance", "productivity"]
 }
