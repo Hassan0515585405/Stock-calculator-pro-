@@ -3,7 +3,9 @@
   "short_name": "StockPro",
   "description": "An efficient inventory and stock management application designed to track products, cotton, and pieces.",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "any",
   "id": "/?source=pwa",
   "background_color": "#ffffff",
@@ -36,5 +38,6 @@
       "form_factor": "narrow"
     }
   ],
-  "categories": ["business", "finance", "productivity"]
+  "categories": ["business", "finance", "productivity"],
+  "prefer_related_applications": false
 }
