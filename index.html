@@ -472,6 +472,16 @@ setInterval(tck,1000);tck();
 at();bc2();rd();
 </script>
 </body>
-</html>
-
-अब आप इसे कॉपी करके इस्तेमाल करें, यह तुरंत और सही तरीके से काम करेगा!
+  <script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+  </script>
+</htm
+"icons": [
+  {
+    "src": "icon.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+]
