@@ -1,7 +1,7 @@
 {
   "name": "Stock Pro - Hassan Stock Manager",
   "short_name": "StockPro",
-  "description": "Stock Pro - Hassan Stock Manager Application",
+  "description": "An efficient inventory and stock management application designed to track products, cotton, and pieces seamlessly.",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
@@ -14,13 +14,13 @@
   "prefer_related_applications": false,
   "icons": [
     {
-      "src": "icon-192.png",
+      "src": "./icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "icon.png",
+      "src": "./icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
