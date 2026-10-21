@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="hi">
-<head>
+<head><link rel="manifest" href="manifest.json">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
 <meta name="theme-color" content="#2563eb">
@@ -473,5 +473,9 @@ setInterval(tck,1000);tck();
 
 at();bc2();rd();
 </script>
-</body>
+</body><script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js');
+  }
+</script>
 </html>
