@@ -1,29 +1,38 @@
 {
-  "name": "Stock Pro - Hassan Stock Manager",
+  "name": "StockPro",
   "short_name": "StockPro",
-  "description": "An efficient inventory and stock management application designed to track products, cotton, and pieces seamlessly.",
-  "start_url": "/",
+  "description": "An efficient inventory and stock management application designed to track products, cotton, and pieces.",
+  "start_url": "./index.html",
   "display": "standalone",
-  "orientation": "portrait",
-  "background_color": "#f1f5f9",
-  "theme_color": "#2563eb",
-  "lang": "en",
-  "dir": "ltr",
-  "scope": "/",
-  "id": "/",
-  "prefer_related_applications": false,
+  "background_color": "#ffffff",
+  "theme_color": "#4f46e5",
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "https://via.placeholder.com/192.png?text=StockPro",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "./icon.png",
+      "src": "https://via.placeholder.com/512.png?text=StockPro",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "https://via.placeholder.com/1280x720.png?text=App+Screenshot",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://via.placeholder.com/750x1334.png?text=Mobile+Screenshot",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "categories": ["business", "finance", "productivity"]
 }
