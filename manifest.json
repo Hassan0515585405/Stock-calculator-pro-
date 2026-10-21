@@ -4,6 +4,8 @@
   "description": "An efficient inventory and stock management application designed to track products, cotton, and pieces.",
   "start_url": "./index.html",
   "display": "standalone",
+  "orientation": "any",
+  "id": "/?source=pwa",
   "background_color": "#ffffff",
   "theme_color": "#4f46e5",
   "icons": [
@@ -34,5 +36,7 @@
       "form_factor": "narrow"
     }
   ],
-  "categories": ["business", "finance", "productivity"]
+  "categories": ["business", "finance", "productivity"],
+  "prefer_related_applications": false,
+  "iarc_rating_id": ""
 }
