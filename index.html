@@ -1,3 +1,5 @@
+To remove the daily password lock system completely from your Stock Pro web app, you need to strip out the daily password checking logic and the lock screen overlay HTML/CSS/JS.
+Here is the clean, updated single-file code with the daily password lock completely removed:
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -87,21 +89,7 @@ body{font-family:system-ui,-apple-system,Roboto,sans-serif;background:#f1f5f9;co
 .form-control { padding: 6px; border: 1px solid #e2e8f0; border-radius: 6px; width: 100%; font-size: 13px; margin-top: 4px; margin-bottom: 8px;}
 </style>
 </head>
-<body><!-- Main Security Lock Screen Overlay -->
-<div id="mainLockOverlay" style="position:fixed; inset:0; background:#0f172a; z-index:99999; display:flex; align-items:center; justify-content:center; padding:15px;">
-  <div style="background:#fff; width:100%; max-width:340px; border-radius:14px; padding:20px; text-align:center; box-shadow:0 10px 25px rgba(0,0,0,0.3);">
-    <div style="font-size:40px; margin-bottom:10px;">🔒</div>
-    <h2 style="font-size:18px; color:#0f172a; margin-bottom:5px;">Stock Pro Locked</h2>
-    <p style="font-size:12px; color:#64748b; margin-bottom:15px;">App istemal karne ke liye Aaj ka Password enter karein</p>
-    
-    <input type="password" id="dailyPassInput" maxlength="6" inputmode="numeric" placeholder="Enter Password" style="width:100%; padding:12px; border:1px solid #cbd5e1; border-radius:8px; font-size:16px; text-align:center; letter-spacing:4px; font-weight:bold; margin-bottom:12px;">
-    
-    <button onclick="verifyDailyPassword()" style="width:100%; padding:12px; background:#2563eb; color:#fff; border:0; border-radius:8px; font-weight:bold; font-size:14px; cursor:pointer;">Unlock App</button>
-    
-    <div id="lockErrMsg" style="color:#dc2626; font-size:12px; font-weight:bold; margin-top:10px; display:none;">Ghalt Password! Admin se rabta karein.</div>
-  </div>
-</div>
-
+<body>
 
 <div class="top">
   <h1>Stock Pro</h1>
@@ -534,37 +522,4 @@ at();bc2();rd();
 </script>
 </body>
 </html>
-// --- Daily Dynamic Password Generator Logic ---
-function getDailyPassword() {
-  var d = new Date();
-  var day = String(d.getDate()).padStart(2, '0');
-  var month = String(d.getMonth() + 1).padStart(2, '0');
-  
-  // Example Logic: Date aur Month se dynamic 4-digit code (e.g. Date 22, Month 10 -> '2210')
-  // Admin custom key (e.g. 1234) bhi rakh sakta hai.
-  return day + month; 
-}
-
-function verifyDailyPassword() {
-  var inputVal = document.getElementById('dailyPassInput').value.trim();
-  var correctPass = getDailyPassword();
-  var errEl = document.getElementById('lockErrMsg');
-  
-  // Custom Admin Master PIN option (e.g. '8888') bhi allowed
-  if (inputVal === correctPass || inputVal === '8888') {
-    document.getElementById('mainLockOverlay').style.display = 'none';
-    if(typeof ts === 'function') ts('🔓 Welcome to StockPro', 'i');
-  } else {
-    errEl.style.display = 'block';
-    document.getElementById('dailyPassInput').value = '';
-  }
-}
-
-// Check lock on startup
-(function checkAppLockOnStart(){
-  var overlay = document.getElementById('mainLockOverlay');
-  if(overlay) {
-    overlay.style.display = 'flex';
-  }
-})();
 
