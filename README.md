@@ -1,1 +1,0 @@
-ya stock calculator ha
